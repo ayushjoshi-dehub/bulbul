@@ -1,6 +1,6 @@
 import express from "express";
 import User from "../models/user.model.js";
-import { verifyClerkWebhook } from "@clerk/backend/webhooks";
+import { Webhook } from "svix";
 
 const router = express.Router();
 
@@ -14,27 +14,18 @@ router.post("/", async (req, res) => {
       });
     }
 
+    // Clerk webhook expects RAW body
     const payload = Buffer.isBuffer(req.body)
       ? req.body.toString("utf8")
       : JSON.stringify(req.body);
 
-    const request = new Request(
-      "http://internal/webhooks/clerk",
-      {
-        method: "POST",
-        headers: new Headers(req.headers),
-        body: payload
-      }
-    );
+    const headers = req.headers;
 
-    const evt = await verifyClerkWebhook(request, {
-      signingSecret
-    });
+    const wh = new Webhook(signingSecret);
 
-    if (
-      evt.type === "user.created" ||
-      evt.type === "user.updated"
-    ) {
+    const evt = wh.verify(payload, headers);
+
+    if (evt.type === "user.created" || evt.type === "user.updated") {
       const u = evt.data;
 
       const email =
@@ -68,15 +59,11 @@ router.post("/", async (req, res) => {
 
     if (evt.type === "user.deleted") {
       if (evt.data.id) {
-        await User.findOneAndDelete({
-          clerkId: evt.data.id
-        });
+        await User.findOneAndDelete({ clerkId: evt.data.id });
       }
     }
 
-    return res.status(200).json({
-      received: true
-    });
+    return res.status(200).json({ received: true });
   } catch (error) {
     console.error("Clerk webhook error:", error);
     return res.status(400).json({
