@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import 'dotenv/config';
 import User from './models/user.model.js';
 import { connectDB } from './lib/db.js';
@@ -7,15 +7,14 @@ import cors from 'cors';
 import fs from "fs";
 import path from "path";
 
-const app = express()
-const PORT = process.env.PORT
-const FRONTEND_URL = process.env.FRONTEND_URL ;
+const app = express();
+const PORT = process.env.PORT || 3001; // Semicolon explicitly added with fallback port
+const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "public");
 
 app.use(express.json());
-app.use(cors({origin :FRONTEND_URL,credentials:true}));
+app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(clerkMiddleware());
-
 
 // If the public directory exists, serve static files from it.
 if (fs.existsSync(publicDir)) {
