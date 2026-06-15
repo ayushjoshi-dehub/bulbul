@@ -4,14 +4,14 @@
 # Produces static HTML/JS/CSS under frontend/dist.
 # --- Stage 1: build the SPA (Vite) ---
 FROM node:22-bookworm-slim AS frontend-build
-WORKDIR /app/frontend
+WORKDIR /app/frontend/vite-project
 
 # Using a wildcard * ensures the build won't crash if package-lock.json is missing
-COPY frontend/package*.json ./
+COPY frontend/vite-project/package*.json ./
 RUN npm install --no-audit --no-fund --legacy-peer-deps
 
 # Copy everything from the local frontend directory
-COPY frontend/ ./
+COPY frontend/vite-project/ ./
 
 # Verify where index.html is and that it's copied correctly
 RUN ls -la
