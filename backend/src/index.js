@@ -21,13 +21,13 @@ if (fs.existsSync(publicDir)) {
     app.use(express.static(publicDir));
     
     // This catch-all handles your SPA routing cleanly now!
-    app.get('*', (req, res, next) => {
-        res.sendFile(path.join(publicDir, 'index.html'), (err) => {
-            if (err) {
-                next(err);
-            }
-        });
+   app.get('/{*splat}', (req, res, next) => {
+    res.sendFile(path.join(publicDir, 'index.html'), (err) => {
+        if (err) {
+            next(err);
+        }
     });
+});
 }
 
 app.listen(PORT, () => {
