@@ -29,9 +29,13 @@ app.get('/', (req, res) => {
 // so we don't need to serve static files from the backend.
 if(fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
-    app.get('/{*any}', (req, res) => {
-        res.sendFile(path.join(publicDir, 'index.html'),(err)=>next(err));
+    app.get('*', (req, res, next) => {
+    res.sendFile(path.join(publicDir, 'index.html'), (err) => {
+        if (err) {
+            next(err); // Now next is safely defined!
+        }
     });
+});
 }
 
  app.listen(PORT, () => {
