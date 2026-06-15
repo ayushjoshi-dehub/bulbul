@@ -1,0 +1,18 @@
+what happens , step by step
+
+your dockerfile build the image in 3 stages:
+
+stage 1- Build the frontend (the website)
+. takes your React code in frontend
+. run npm run build (vite) ,which turns all your react code into plain sattic file:HTML,JS,CSS
+.these land in frontend/dist/
+.THe public clerk key gets baked into th js here (VITE_CLERK_PUBLISHABLE_KEY)
+
+stage2 - BUild the backend(the API)
+. Takes your Express code in backend
+.npm run build here literally just copies src/-> dist/ (backend is plain JS, npthing to compile)
+
+stage3 - The final runtime  image (the only one that ships)
+.installs only production dependencies(no dev tool, keeps the image small)
+.copies the backend code->dist/
+.starts the server with node dist/index.js
