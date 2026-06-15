@@ -2,18 +2,26 @@
 
 # --- Stage 1: build the SPA (Vite) ---
 # Produces static HTML/JS/CSS under frontend/dist.
+# --- Stage 1: build the SPA (Vite) ---
 FROM node:22-bookworm-slim AS frontend-build
 WORKDIR /app/frontend
-COPY frontend/package.json frontend/package-lock.json ./
+
+# Using a wildcard * ensures the build won't crash if package-lock.json is missing
+COPY frontend/package*.json ./
 RUN npm install --no-audit --no-fund --legacy-peer-deps
+
+# Copy everything from the local frontend directory
 COPY frontend/ ./
-# Empty = browser calls /api on the same host as the page.
+
+# Verify where index.html is and that it's copied correctly
+RUN ls -la
+
+# Environment variables
 ENV VITE_API_URL=
-# Public Clerk key is embedded in client JS.
 ARG VITE_CLERK_PUBLISHABLE_KEY
 ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
-RUN npm run build
 
+RUN npm run build
 # --- Stage 2: build the API bundle ---
 # This backend is ESM JavaScript, so npm run build copies src/ to dist/.
 FROM node:22-bookworm-slim AS backend-build
