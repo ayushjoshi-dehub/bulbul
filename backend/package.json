@@ -33,7 +33,9 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node dist/index.js",
-    "build": "rimraf dist && cpx \"src/**/*\" dist"
+    "build": "rimraf dist && cpx \"src/**/*\" dist",
+    "db:seed": "node src/seeds/user.seed.js"
+
   },
   "keywords": [],
   "author": "",

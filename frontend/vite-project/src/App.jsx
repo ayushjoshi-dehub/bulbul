@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-// 1. Swapped 'Show' for 'SignedIn' and 'SignedOut'
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
-import { Button } from '@heroui/react';
-function App() {
-  return (
-    <div>
-      <h1>BulBul</h1>
-       <Button>
-      My Button
-    </Button>
+import { WallpaperProvider } from "./context/WallpaperContext.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-      <header>
-        {/* 2. Used SignedOut for logged-out users */}
-        
-        <SignedOut>
-          <SignInButton mode="modal"  />
-          <SignUpButton mode="modal"/>
-        </SignedOut>
-        
-        {/* 3. Used SignedIn for logged-in users */}
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </header>  
-    </div>
-  )
+import ChatPage from "./pages/ChatPage";
+import AuthPage from "./pages/AuthPage";
+
+import { useAuth } from "@clerk/clerk-react";
+
+import PageLoader from "./components/PageLoader";
+import { useAuthStore } from "./store/useAuthStore";
+import { useEffect } from "react";
+
+import { Toaster } from "react-hot-toast";
+
+function App() {
+  const { isSignedIn, isLoaded } = useAuth();
+
+  const clearAuth = useAuthStore((state) => state.clearAuth);
+  const checkAuth = useAuthStore((state) => state.checkAuth);
+  const isCheckingAuth = useAuthStore((state) => state.isCheckingAuth);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (isSignedIn) checkAuth();
+    else clearAuth();
+  }, [checkAuth, clearAuth, isLoaded, isSignedIn]);
+
+  if (!isLoaded || (isSignedIn && isCheckingAuth)) return <PageLoader />;
+
+  return (
+    <ThemeProvider>
+      <WallpaperProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={isSignedIn ? <ChatPage /> : <Navigate to="/auth" replace />}
+          />
+          <Route
+            path="/auth"
+            element={!isSignedIn ? <AuthPage /> : <Navigate to="/" replace />}
+          />
+        </Routes>
+
+        <Toaster />
+      </WallpaperProvider>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
