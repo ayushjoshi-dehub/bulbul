@@ -1,9 +1,7 @@
-export function signup(req, res) {
-    res.send('signup route');
-}
-export function login(req, res) {
-    res.send('login route');
-}
-export function logout(req, res) {
-    res.send('logout route');
+export async function checkAuth(req, res) {
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  res.status(200).json({ user: req.user });
 }

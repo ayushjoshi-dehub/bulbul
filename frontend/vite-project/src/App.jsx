@@ -5,11 +5,15 @@ import heroImg from './assets/hero.png'
 import './App.css'
 // 1. Swapped 'Show' for 'SignedIn' and 'SignedOut'
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
-
+import { Button } from '@heroui/react';
 function App() {
   return (
     <div>
-      <h1>MY APP</h1>
+      <h1>BulBul</h1>
+       <Button>
+      My Button
+    </Button>
+
       <header>
         {/* 2. Used SignedOut for logged-out users */}
         
