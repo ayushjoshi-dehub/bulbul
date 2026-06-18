@@ -570,7 +570,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_index",
-      "community": 0,
+      "community": 10,
       "norm_label": "index.js"
     },
     {
@@ -580,7 +580,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_index_default_frontend_urls",
-      "community": 0,
+      "community": 10,
       "norm_label": "default_frontend_urls"
     },
     {
@@ -590,7 +590,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_index_frontend_urls",
-      "community": 0,
+      "community": 10,
       "norm_label": "frontend_urls"
     },
     {
@@ -600,7 +600,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_index_publicdir",
-      "community": 0,
+      "community": 10,
       "norm_label": "publicdir"
     },
     {
@@ -610,7 +610,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_cron",
-      "community": 0,
+      "community": 10,
       "norm_label": "cron.js"
     },
     {
@@ -620,7 +620,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_cron_job",
-      "community": 0,
+      "community": 10,
       "norm_label": "job"
     },
     {
@@ -710,7 +710,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_socket_app",
-      "community": 0,
+      "community": 10,
       "norm_label": "app"
     },
     {
@@ -720,7 +720,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_socket_server",
-      "community": 0,
+      "community": 10,
       "norm_label": "server"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "routes_message_route_router",
-      "community": 0,
+      "community": 10,
       "norm_label": "router"
     },
     {
@@ -1050,7 +1050,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "webhooks_clerk_webhook_router",
-      "community": 0,
+      "community": 10,
       "norm_label": "router"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "vite_project_package_dependencies",
-      "community": 4,
+      "community": 19,
       "norm_label": "dependencies"
     },
     {
@@ -1450,7 +1450,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_clerk_clerk_react",
-      "community": 4,
+      "community": 19,
       "norm_label": "@clerk/clerk-react"
     },
     {
@@ -1460,7 +1460,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_heroui_react",
-      "community": 4,
+      "community": 19,
       "norm_label": "@heroui/react"
     },
     {
@@ -1470,7 +1470,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_axios",
-      "community": 4,
+      "community": 19,
       "norm_label": "axios"
     },
     {
@@ -1480,7 +1480,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_lucide_react",
-      "community": 4,
+      "community": 19,
       "norm_label": "lucide-react"
     },
     {
@@ -1490,7 +1490,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_react",
-      "community": 4,
+      "community": 19,
       "norm_label": "react"
     },
     {
@@ -1500,7 +1500,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_react_dom",
-      "community": 4,
+      "community": 19,
       "norm_label": "react-dom"
     },
     {
@@ -1510,7 +1510,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_react_hot_toast",
-      "community": 4,
+      "community": 19,
       "norm_label": "react-hot-toast"
     },
     {
@@ -1520,7 +1520,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_react_router_dom",
-      "community": 4,
+      "community": 19,
       "norm_label": "react-router-dom"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_socket_io_client",
-      "community": 4,
+      "community": 19,
       "norm_label": "socket.io-client"
     },
     {
@@ -1540,7 +1540,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "vite_project_package_dependencies_zustand",
-      "community": 4,
+      "community": 19,
       "norm_label": "zustand"
     },
     {
@@ -1574,10 +1574,20 @@
       "norm_label": "@rollup/plugin-babel"
     },
     {
-      "label": "@types/react",
+      "label": "@tailwindcss/postcss",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
       "source_location": "L28",
+      "_origin": "ast",
+      "id": "vite_project_package_devdependencies_tailwindcss_postcss",
+      "community": 4,
+      "norm_label": "@tailwindcss/postcss"
+    },
+    {
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "frontend/vite-project/package.json",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_types_react",
       "community": 4,
@@ -1587,7 +1597,7 @@
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L29",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_types_react_dom",
       "community": 4,
@@ -1597,7 +1607,7 @@
       "label": "@vitejs/plugin-react",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_vitejs_plugin_react",
       "community": 4,
@@ -1607,7 +1617,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L31",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_eslint",
       "community": 4,
@@ -1617,7 +1627,7 @@
       "label": "eslint-plugin-react-dom",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_eslint_plugin_react_dom",
       "community": 4,
@@ -1627,7 +1637,7 @@
       "label": "eslint-plugin-react-hooks",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_eslint_plugin_react_hooks",
       "community": 4,
@@ -1637,7 +1647,7 @@
       "label": "eslint-plugin-react-refresh",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_eslint_plugin_react_refresh",
       "community": 4,
@@ -1647,7 +1657,7 @@
       "label": "eslint-plugin-react-x",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_eslint_plugin_react_x",
       "community": 4,
@@ -1657,17 +1667,27 @@
       "label": "globals",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_globals",
       "community": 4,
       "norm_label": "globals"
     },
     {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "frontend/vite-project/package.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "vite_project_package_devdependencies_tailwindcss",
+      "community": 4,
+      "norm_label": "tailwindcss"
+    },
+    {
       "label": "typescript-eslint",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_typescript_eslint",
       "community": 4,
@@ -1677,11 +1697,21 @@
       "label": "vite",
       "file_type": "code",
       "source_file": "frontend/vite-project/package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "vite_project_package_devdependencies_vite",
       "community": 4,
       "norm_label": "vite"
+    },
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "frontend/vite-project/postcss.config.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "vite_project_postcss_config",
+      "community": 27,
+      "norm_label": "postcss.config.js"
     },
     {
       "label": "App.jsx",
@@ -1890,7 +1920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "auth_authheader",
-      "community": 7,
+      "community": 2,
       "norm_label": "authheader.jsx"
     },
     {
@@ -2744,6 +2774,16 @@
       "norm_label": "usechatstore"
     },
     {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "frontend/vite-project/tailwind.config.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "vite_project_tailwind_config",
+      "community": 28,
+      "norm_label": "tailwind.config.js"
+    },
+    {
       "label": "vite.config.js",
       "file_type": "code",
       "source_file": "frontend/vite-project/vite.config.js",
@@ -2814,10 +2854,20 @@
       "norm_label": "@typescript-eslint/parser"
     },
     {
-      "label": "eslint-plugin-react-dom",
+      "label": "autoprefixer",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_devdependencies_autoprefixer",
+      "community": 13,
+      "norm_label": "autoprefixer"
+    },
+    {
+      "label": "eslint-plugin-react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "package_devdependencies_eslint_plugin_react_dom",
       "community": 13,
@@ -2827,11 +2877,31 @@
       "label": "eslint-plugin-react-x",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "package_devdependencies_eslint_plugin_react_x",
       "community": 13,
       "norm_label": "eslint-plugin-react-x"
+    },
+    {
+      "label": "postcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_devdependencies_postcss",
+      "community": 13,
+      "norm_label": "postcss"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_devdependencies_tailwindcss",
+      "community": 13,
+      "norm_label": "tailwindcss"
     },
     {
       "label": "SKILL.md",
@@ -5819,6 +5889,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/vite-project/package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "vite_project_package_devdependencies",
+      "target": "vite_project_package_devdependencies_tailwindcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/vite-project/package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "vite_project_package_devdependencies",
+      "target": "vite_project_package_devdependencies_tailwindcss_postcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/vite-project/package.json",
       "source_location": "L28",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8539,6 +8629,16 @@
       "source_file": "package.json",
       "source_location": "L8",
       "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_autoprefixer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_eslint_plugin_react_dom"
@@ -8552,6 +8652,26 @@
       "confidence_score": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_eslint_plugin_react_x"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_postcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9225,5 +9345,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1f60e0df26ea1859ad7e0c9395129b8c5a14d03a"
+  "built_at_commit": "61d73831fef323aa62af55f8e25b67a0641eb9db"
 }
