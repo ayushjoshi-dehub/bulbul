@@ -1,20 +1,31 @@
 import ImageKit from "@imagekit/nodejs";
 
-const imagekit = new ImageKit({
-  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
-});
+let imagekit = null;
 
 export function hasImageKitConfig() {
   return Boolean(
     process.env.IMAGEKIT_PUBLIC_KEY &&
-    process.env.IMAGEKIT_PRIVATE_KEY &&
-    process.env.IMAGEKIT_URL_ENDPOINT
+      process.env.IMAGEKIT_PRIVATE_KEY &&
+      process.env.IMAGEKIT_URL_ENDPOINT
   );
 }
 
-// create safe filename
+function getImageKitClient() {
+  if (!hasImageKitConfig()) {
+    return null;
+  }
+
+  if (!imagekit) {
+    imagekit = new ImageKit({
+      publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+      privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+      urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+    });
+  }
+
+  return imagekit;
+}
+
 function createFilename(originalname = "upload") {
   const safeName = originalname
     .replace(/\s+/g, "_")
@@ -24,10 +35,15 @@ function createFilename(originalname = "upload") {
 }
 
 export async function uploadChatMedia(file) {
-  const filename = createFilename(file.originalname);
+  const client = getImageKitClient();
 
-  const result = await imagekit.upload({
-    file: file.buffer.toString("base64"), // ✅ correct way
+  if (!client) {
+    throw new Error("ImageKit is not configured");
+  }
+
+  const filename = createFilename(file.originalname);
+  const result = await client.upload({
+    file: file.buffer.toString("base64"),
     fileName: filename,
     folder: "/chat",
   });
