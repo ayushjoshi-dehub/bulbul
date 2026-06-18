@@ -1,28 +1,66 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-
-const userSchema = new mongoose.Schema({
-
+const userSchema = new mongoose.Schema(
+  {
     clerkId: {
-        type: String,
-        required: true,
-        unique: true,
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
     },
     email: {
-        type: String,
-        required: true,
-        unique: true,
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
+      trim: true,
+      lowercase: true,
     },
-    fullname: {
-        type: String,
-        required: true,
+    fullName: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    profilePic:{
-        type: String,
-        default: '',
-    }
-}, { timestamps: true }); //createdAt and updatedAt fields will be automatically added
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
+      trim: true,
+      lowercase: true,
+    },
+    profilePic: {
+      type: String,
+      default: "",
+    },
+    friends: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
+    outgoingRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
+    incomingRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
+    lastSeen: {
+      type: Date,
+      default: null,
+    },
+  },
+  { timestamps: true },
+);
 
-
-const User= mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 export default User;

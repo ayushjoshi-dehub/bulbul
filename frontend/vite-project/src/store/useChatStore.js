@@ -26,10 +26,11 @@ export const useChatStore = create(
         set({ isUsersLoading: true });
         try {
           const res = await axiosInstance.get("/messages/users");
+          const users = Array.isArray(res.data) ? res.data : res.data?.users || [];
           set((state) => ({
-            users: res.data,
+            users,
             selectedUser:
-              state.selectedUser && res.data.some((user) => user._id === state.selectedUser._id)
+              state.selectedUser && users.some((user) => user._id === state.selectedUser._id)
                 ? state.selectedUser
                 : null,
           }));
@@ -65,6 +66,30 @@ export const useChatStore = create(
         }
       },
 
+      sendFriendRequest: async (userId) => {
+        try {
+          await axiosInstance.post(`/messages/request/${userId}`);
+          await Promise.all([get().getUsers(), get().getConversations()]);
+          toast.success("Friend request sent");
+          return true;
+        } catch (error) {
+          toast.error(error.response?.data?.message || "Failed to send request");
+          return false;
+        }
+      },
+
+      acceptFriendRequest: async (userId) => {
+        try {
+          await axiosInstance.post(`/messages/accept/${userId}`);
+          await Promise.all([get().getUsers(), get().getConversations()]);
+          toast.success("Friend request accepted");
+          return true;
+        } catch (error) {
+          toast.error(error.response?.data?.message || "Failed to accept request");
+          return false;
+        }
+      },
+
       sendMessage: async (messageData) => {
         const { selectedUser, messages } = get();
         if (!selectedUser) return false;
@@ -86,20 +111,29 @@ export const useChatStore = create(
         const socket = useAuthStore.getState().socket;
         if (!socket) return;
 
-        socket.off("newMessage");
-        socket.on("newMessage", (newMessage) => {
-          // if im not the receiver don't do anything just return
+        if (socket.__chatNewMessageHandler) {
+          socket.off("newMessage", socket.__chatNewMessageHandler);
+        }
+
+        const handleNewMessage = (newMessage) => {
           if (String(newMessage.senderId) !== String(userId)) return;
 
           set({ messages: [...get().messages, newMessage] });
-
           get().getConversations();
-        });
+        };
+
+        socket.__chatNewMessageHandler = handleNewMessage;
+        socket.on("newMessage", handleNewMessage);
       },
 
       unsubscribeFromMessages: () => {
         const socket = useAuthStore.getState().socket;
-        socket?.off("newMessage");
+        if (!socket) return;
+
+        if (socket.__chatNewMessageHandler) {
+          socket.off("newMessage", socket.__chatNewMessageHandler);
+          delete socket.__chatNewMessageHandler;
+        }
       },
 
       setSelectedUser: (selectedUser) => set({ selectedUser }),
@@ -127,11 +161,14 @@ export const useChatStore = create(
         return get().sendMessage({ text: messageText });
       },
 
-      sendMediaMessage: async ({ conversationId, file }) => {
+      sendMediaMessage: async ({ conversationId, file, audioDuration }) => {
         if (!conversationId || !file) return false;
 
         const formData = new FormData();
         formData.append("media", file);
+        if (audioDuration != null) {
+          formData.append("audioDuration", String(audioDuration));
+        }
 
         set({ isSendingMedia: true });
         try {

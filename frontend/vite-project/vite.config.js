@@ -7,4 +7,14 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    host: "localhost",
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      host: "localhost",
+      clientPort: 5173,
+      protocol: "ws",
+    },
+  },
 });

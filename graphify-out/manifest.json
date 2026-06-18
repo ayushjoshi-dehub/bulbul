@@ -1,0 +1,447 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1781794330.0303104,
+    "ast_hash": "c5a97cdbb2fb6c417831f259d1b4a9fd",
+    "semantic_hash": ""
+  },
+  "backend/package.json": {
+    "mtime": 1781619991.0212097,
+    "ast_hash": "ad96a7114f73d0a49837b9306f210fad",
+    "semantic_hash": ""
+  },
+  "backend/src/controllers/auth.controller.js": {
+    "mtime": 1781795500.386231,
+    "ast_hash": "cd9288b354740d796c1e819900b3d527",
+    "semantic_hash": ""
+  },
+  "backend/src/controllers/message.controller.js": {
+    "mtime": 1781797577.732418,
+    "ast_hash": "cd38925c4c529b7e3e8d37fb5db5cb56",
+    "semantic_hash": ""
+  },
+  "backend/src/index.js": {
+    "mtime": 1781795533.137887,
+    "ast_hash": "e0edb970f2bf6f5aaa3d261f48f772d7",
+    "semantic_hash": ""
+  },
+  "backend/src/lib/cron.js": {
+    "mtime": 1781541009.919787,
+    "ast_hash": "d2b104b0b311086824914196fcbcdf2a",
+    "semantic_hash": ""
+  },
+  "backend/src/lib/db.js": {
+    "mtime": 1781441220.737054,
+    "ast_hash": "000ae9776ffcb16000f7742309012409",
+    "semantic_hash": ""
+  },
+  "backend/src/lib/imagekit.js": {
+    "mtime": 1781583219.248938,
+    "ast_hash": "a6acad7c700f3fb8f0bbfa70a57695f6",
+    "semantic_hash": ""
+  },
+  "backend/src/lib/socket.js": {
+    "mtime": 1781797067.094114,
+    "ast_hash": "f953a71f7ece9336cee48dfd81b5ea50",
+    "semantic_hash": ""
+  },
+  "backend/src/middleware/auth.middleware.js": {
+    "mtime": 1781795477.2649667,
+    "ast_hash": "a01f7b9eb991580b12c269c38c44f2cc",
+    "semantic_hash": ""
+  },
+  "backend/src/middleware/protectRoute.js": {
+    "mtime": 1781551374.2472029,
+    "ast_hash": "a86c132490808f19a61f1460c32ce279",
+    "semantic_hash": ""
+  },
+  "backend/src/middleware/upload.middleware.js": {
+    "mtime": 1781797286.940788,
+    "ast_hash": "5c85775097837be6f414331ef20fde14",
+    "semantic_hash": ""
+  },
+  "backend/src/models/message.model.js": {
+    "mtime": 1781797533.6118696,
+    "ast_hash": "d0b9c46f22395bc0ae697f6217f2e7f5",
+    "semantic_hash": ""
+  },
+  "backend/src/models/user.model.js": {
+    "mtime": 1781795446.0359855,
+    "ast_hash": "d0294dd00b8e9550a5cd7e4a4f89b389",
+    "semantic_hash": ""
+  },
+  "backend/src/routes/auth.route.js": {
+    "mtime": 1781772442.461612,
+    "ast_hash": "bc1f3d77a23753b7def2b958dbd40039",
+    "semantic_hash": ""
+  },
+  "backend/src/routes/message.route.js": {
+    "mtime": 1781771667.4119685,
+    "ast_hash": "fe9d9882d1519b0e587f21b6ca024ad2",
+    "semantic_hash": ""
+  },
+  "backend/src/seeds/user.seed.js": {
+    "mtime": 1781618654.7404203,
+    "ast_hash": "c6f1be976ab84727dc1c1e14690368ff",
+    "semantic_hash": ""
+  },
+  "backend/src/webhooks/clerk.webhook.js": {
+    "mtime": 1781664159.9919953,
+    "ast_hash": "10ea0dfd9dfbece067a9c0a9966ee588",
+    "semantic_hash": ""
+  },
+  "frontend/package.json": {
+    "mtime": 1781627127.0410516,
+    "ast_hash": "572101c613d81d21833878cf042d649b",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/eslint.config.js": {
+    "mtime": 1781789173.1402338,
+    "ast_hash": "893c40b46b1dfff92581f60d10da1aa8",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/package.json": {
+    "mtime": 1781789064.525653,
+    "ast_hash": "d293f0f0fccdf6fdb33406fb47d20096",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/App.jsx": {
+    "mtime": 1781796007.2430792,
+    "ast_hash": "ff01a8529299584882adbe385fbb418d",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/AppLogo.jsx": {
+    "mtime": 1781614505.163565,
+    "ast_hash": "d04ac4f735e13887edbf92970285190c",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/PageLoader.jsx": {
+    "mtime": 1781615453.2332113,
+    "ast_hash": "c36b73182eebcc71bd4f2e23d85fcc8d",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/ThemePresetPicker.jsx": {
+    "mtime": 1781615372.4748988,
+    "ast_hash": "b6a7e863f5c4d47e8193f5ad2158af6f",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/ThemeToggle.jsx": {
+    "mtime": 1781615413.2731042,
+    "ast_hash": "2f6c64bdaa361f3db4336332849160de",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/WallpaperPicker.jsx": {
+    "mtime": 1781625950.7721117,
+    "ast_hash": "04fd92f847d79b4377d00efd06a5f350",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/auth/AuthActionPanel.jsx": {
+    "mtime": 1781626256.8262548,
+    "ast_hash": "54288a68dd944f958f9aa3f163a6e324",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/auth/AuthCardShell.jsx": {
+    "mtime": 1781614183.8826928,
+    "ast_hash": "1d6d8c72adcf14093a83d6270d86e85e",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/auth/AuthHeader.jsx": {
+    "mtime": 1781614059.0500543,
+    "ast_hash": "fc8cafbf57a134e3c9791b4fcfb48e5c",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/auth/AuthHeroPanel.jsx": {
+    "mtime": 1781614030.6650164,
+    "ast_hash": "1ab5c52a0a5e5a9d1d8088c9aeb5e7c9",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/auth/AuthHeroPattern.jsx": {
+    "mtime": 1781614199.1322036,
+    "ast_hash": "2a889069d6d812140491660433eeae3f",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/AvatarWithOnlineIndicator.jsx": {
+    "mtime": 1781619288.3567872,
+    "ast_hash": "ede5263a055405b4c6e1e35b2cfc310c",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/ChatComposer.jsx": {
+    "mtime": 1781797566.6122806,
+    "ast_hash": "016f9c7308a6de1791ddddaf042ddb95",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/ChatHeader.jsx": {
+    "mtime": 1781797062.449188,
+    "ast_hash": "c3ae884de1587e78f73089bbbf26a832",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/ChatSidebar.jsx": {
+    "mtime": 1781775499.5565069,
+    "ast_hash": "c8f6c0e22bfbb92d7c9fe8ea48d5aad6",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/ConversationRow.jsx": {
+    "mtime": 1781772139.5395553,
+    "ast_hash": "bba2691ed9818aa60358846afcef9f6e",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/MessageBubble.jsx": {
+    "mtime": 1781797546.5434475,
+    "ast_hash": "e0460922e88a5f74b8e09ce9ca71877e",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/MessageList.jsx": {
+    "mtime": 1781619492.546787,
+    "ast_hash": "e8421911314c2470b895f46e1b86c45b",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/MessageVideo.jsx": {
+    "mtime": 1781619515.9656022,
+    "ast_hash": "98256787fd7256f2a94ae339c31d41de",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/components/chat/NoConversationPlaceholder.jsx": {
+    "mtime": 1781619532.555742,
+    "ast_hash": "82c7b6f7c28899c5a4915a7f6b977cca",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/context/ThemeContext.jsx": {
+    "mtime": 1781625802.5698783,
+    "ast_hash": "6ab393ddefccda6bb033be77dbdc98c7",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/context/WallpaperContext.jsx": {
+    "mtime": 1781625680.9971404,
+    "ast_hash": "5fdb2dc28a7058693c278c2bef1a71d4",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/context/theme.js": {
+    "mtime": 1781625603.2169704,
+    "ast_hash": "e67dba83c989736453568c2fcab3a200",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/context/wallpaper.js": {
+    "mtime": 1781625599.7370393,
+    "ast_hash": "41e6c23948be344e4500a41b06a6cd3e",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/data/herouiThemePresets.js": {
+    "mtime": 1781610897.5839312,
+    "ast_hash": "ada8f1eece55f40298518abd6d88c8df",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/data/wallpapers.js": {
+    "mtime": 1781610931.9215364,
+    "ast_hash": "035157dc22b8d2adcf334ab3fe213baf",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/hooks/useKeyboardSound.js": {
+    "mtime": 1781618365.8265612,
+    "ast_hash": "59fb6aa442e2f644524af46e28bbd433",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/hooks/useMediaQuery.js": {
+    "mtime": 1781618822.8305612,
+    "ast_hash": "2cb300df812ed14723b72d4b6532734c",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/hooks/useScrollToBottom.js": {
+    "mtime": 1781621931.0592122,
+    "ast_hash": "c1795aee0ee7b79c00255be540893239",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/hooks/useSelectedConversation.js": {
+    "mtime": 1781797291.7221024,
+    "ast_hash": "03660c43832fc4c810ad9d7aabec0e61",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/lib/axios.js": {
+    "mtime": 1781666613.0783622,
+    "ast_hash": "5ecc1040a38cd2915dd2fa10ffe4257c",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/lib/imagekit.js": {
+    "mtime": 1781615951.8195996,
+    "ast_hash": "dcfd8edc4b239416a83203937b7e0727",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/lib/utils.js": {
+    "mtime": 1781621161.5045483,
+    "ast_hash": "b3206ba63657bc21b5bd4b14f5397377",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/main.jsx": {
+    "mtime": 1781796001.5909288,
+    "ast_hash": "76a01e50788014907ccf733f642a385e",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/pages/AuthPage.jsx": {
+    "mtime": 1781611823.636571,
+    "ast_hash": "d008f872b2cd3e22f63ae42eb951e0c4",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/pages/ChatPage.jsx": {
+    "mtime": 1781795649.0286922,
+    "ast_hash": "ab22e9963a8d67a262e8d1e75a25fde5",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/store/useAuthStore.js": {
+    "mtime": 1781797036.0785854,
+    "ast_hash": "6ecce557f8cb6e32011a4c39dba0a2ea",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/store/useChatStore.js": {
+    "mtime": 1781797546.3407242,
+    "ast_hash": "9939f5b75da78cd0620b2590f48d7ce7",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/vite.config.js": {
+    "mtime": 1781796001.9186337,
+    "ast_hash": "c67fb11ddd0c1db33e30f9ae0b3b3e41",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1781788842.8513925,
+    "ast_hash": "14872b220cef2b79f2373c0857d07bf5",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/SKILL.md": {
+    "mtime": 1781794330.2027953,
+    "ast_hash": "c18f8b040bb0537cf75d7909c811af56",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/add-watch.md": {
+    "mtime": 1781792833.6213295,
+    "ast_hash": "0df0589623217ca38a12bdcabfb42f4c",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/exports.md": {
+    "mtime": 1781792833.6223297,
+    "ast_hash": "c04ddf8f1f5ef5e262ebec491a523c74",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1781792833.6233313,
+    "ast_hash": "a86a7321597b23cc2b22e011b3dc6e1d",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1781792833.6253328,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/hooks.md": {
+    "mtime": 1781792833.6253328,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/query.md": {
+    "mtime": 1781792833.7583313,
+    "ast_hash": "7d1ff295a0e0aa1cc9a14e52c3a19202",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/transcribe.md": {
+    "mtime": 1781792833.7603304,
+    "ast_hash": "70f6aa30d6211f3a2c7e9fc45479f50c",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/update.md": {
+    "mtime": 1781792833.7603304,
+    "ast_hash": "0662e1a77b21d670132cd5855954bfff",
+    "semantic_hash": ""
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1781793494.833421,
+    "ast_hash": "2b23503628bf2ec71d067a85ca8948ab",
+    "semantic_hash": ""
+  },
+  ".notebook/tmp/drawIOAppForChrome.html": {
+    "mtime": 1781794326.158751,
+    "ast_hash": "ca39cee5d86ca27f88e633cb6b81df15",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1781794330.200771,
+    "ast_hash": "1fc5d9918cdc28974ecfe3632e3d962b",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1781531680.9164171,
+    "ast_hash": "cc5ed7415888ac2d50c4709d13121625",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/README.md": {
+    "mtime": 1779329522.967711,
+    "ast_hash": "a28dc4cb878325f3e9e5649f3e1469ac",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/index.html": {
+    "mtime": 1781458142.224394,
+    "ast_hash": "49864d6cdd5c1a64975538441fe1baff",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/auth.png": {
+    "mtime": 1781608517.1163213,
+    "ast_hash": "8dc3123e94df403cba8b92ec141059d6",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/favicon.svg": {
+    "mtime": 1779329523.1501188,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/icons.svg": {
+    "mtime": 1779329523.2306583,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/logo.png": {
+    "mtime": 1781610607.8117313,
+    "ast_hash": "a1440c3231212649e09af1f6d133d9c7",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/wallpapers/iceland-coast.jpg": {
+    "mtime": 1781610319.4560018,
+    "ast_hash": "aba1fe329e3313958b96869d6d41bdcf",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/wallpapers/new-york-midtown.jpg": {
+    "mtime": 1781610336.4281323,
+    "ast_hash": "b32e896da264c483a4ea7b157811bd1f",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/assets/hero.png": {
+    "mtime": 1779329523.0423813,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/assets/react.svg": {
+    "mtime": 1779329523.2926588,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/src/assets/vite.svg": {
+    "mtime": 1779329523.3519962,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/sounds/keystroke1.mp3": {
+    "mtime": 1781610253.1400275,
+    "ast_hash": "acb459d2f395cec0a3c2835eb1f2d026",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/sounds/keystroke2.mp3": {
+    "mtime": 1781610265.670126,
+    "ast_hash": "396e1a14a71f585bcc1d8d7ee7a7346f",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/sounds/keystroke3.mp3": {
+    "mtime": 1781610276.1309395,
+    "ast_hash": "f92cd4c673072e9d2b95359b1d2637c2",
+    "semantic_hash": ""
+  },
+  "frontend/vite-project/public/sounds/keystroke4.mp3": {
+    "mtime": 1781610288.5011938,
+    "ast_hash": "123f8b6e16d5a7890334334c81c4346b",
+    "semantic_hash": ""
+  }
+}

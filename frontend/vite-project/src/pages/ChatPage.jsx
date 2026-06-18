@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useWallpaper } from "../context/wallpaper";
 import { useChatStore } from "../store/useChatStore";
+import { useAuthStore } from "../store/useAuthStore";
 import { useSelectedConversation } from "../hooks/useSelectedConversation";
-import { useEffect } from "react";
 import ChatSidebar from "../components/chat/ChatSidebar";
 import { ChatHeader } from "../components/chat/ChatHeader";
 import { MessageList } from "../components/chat/MessageList";
@@ -16,6 +17,8 @@ function ChatPage() {
   const subscribeToMessages = useChatStore((state) => state.subscribeToMessages);
   const unsubscribeFromMessages = useChatStore((state) => state.unsubscribeFromMessages);
 
+  const lastSocketEvent = useAuthStore((state) => state.lastSocketEvent);
+
   const { activeConversation, activeConversationId, isLargeScreen } = useSelectedConversation();
 
   useEffect(() => {
@@ -29,9 +32,22 @@ function ChatPage() {
     getMessages(activeConversationId);
     subscribeToMessages(activeConversationId);
 
-    // cleanup
     return () => unsubscribeFromMessages();
-  }, [getMessages, activeConversationId, subscribeToMessages, unsubscribeFromMessages]);
+  }, [activeConversationId, getMessages, subscribeToMessages, unsubscribeFromMessages]);
+
+  useEffect(() => {
+    if (!lastSocketEvent) return;
+
+    if (lastSocketEvent.type === "friend-request" || lastSocketEvent.type === "friend-request-accepted") {
+      getUsers();
+      getConversations();
+      return;
+    }
+
+    if (lastSocketEvent.type === "new-message") {
+      getConversations();
+    }
+  }, [lastSocketEvent, getConversations, getUsers]);
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden p-2 sm:p-3 md:p-8" style={frameStyle}>
@@ -52,4 +68,5 @@ function ChatPage() {
     </div>
   );
 }
+
 export default ChatPage;

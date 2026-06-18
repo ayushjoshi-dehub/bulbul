@@ -7,7 +7,13 @@ const IMAGE_TRANSFORM = "q-auto,w-640,f-auto";
 export function MessageBubble({ message }) {
   const isOwnMessage = message.role === "me";
   const hasImage = Boolean(message.imageUrl);
+  const hasAudio = Boolean(message.audioUrl);
   const hasVideo = Boolean(message.videoUrl);
+  const audioDuration = Number(message.audioDuration || 0);
+  const audioLabel = hasAudio ? "Voice note" : "";
+  const formattedAudioDuration = audioDuration > 0
+    ? `${Math.floor(audioDuration / 60)}:${String(audioDuration % 60).padStart(2, "0")}`
+    : "";
 
   return (
     <div className={`flex w-full ${isOwnMessage ? "justify-end" : "justify-start"}`}>
@@ -26,6 +32,15 @@ export function MessageBubble({ message }) {
           />
         ) : null}
         {hasVideo ? <MessageVideo src={message.videoUrl} /> : null}
+        {hasAudio ? (
+          <div className="mb-1.5 rounded-xl border border-border bg-background/50 p-2">
+            <audio controls src={message.audioUrl} className="h-10 w-full max-w-full" />
+            <div className="mt-1 flex items-center justify-between gap-2 text-[11px] text-muted">
+              <span>{audioLabel}</span>
+              {formattedAudioDuration ? <span>{formattedAudioDuration}</span> : null}
+            </div>
+          </div>
+        ) : null}
         {message.text ? (
           <p className="whitespace-pre-wrap wrap-break-word">{message.text}</p>
         ) : null}

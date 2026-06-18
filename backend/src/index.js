@@ -12,8 +12,12 @@ import messageRoutes from "./routes/message.route.js";
 import job from "./lib/cron.js";
 import { app, server } from "./lib/socket.js";
 
-const PORT = process.env.PORT || 3001;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+const PORT = process.env.PORT || 5001;
+const DEFAULT_FRONTEND_URLS = ["http://localhost:5173", "http://localhost:5174"];
+const FRONTEND_URLS = [
+  process.env.FRONTEND_URL,
+  ...DEFAULT_FRONTEND_URLS,
+].filter(Boolean);
 const publicDir = path.join(process.cwd(), "public");
 
 // Clerk webhook route must come BEFORE express.json()
@@ -23,16 +27,15 @@ app.use(
   clerkWebhook
 );
 
+app.use(clerkMiddleware());
 app.use(express.json());
 
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: FRONTEND_URLS,
     credentials: true,
   })
 );
-
-app.use(clerkMiddleware());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);

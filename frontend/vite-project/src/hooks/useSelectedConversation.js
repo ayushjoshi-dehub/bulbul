@@ -5,11 +5,16 @@ import { useAuthStore } from "../store/useAuthStore";
 
 // John Doe -> JD
 export function getInitials(name) {
+  if (!name || typeof name !== "string") {
+    return "?";
+  }
   return name
     .split(" ")
     .filter(Boolean)
     .map((namePart) => namePart[0])
-    .join("");
+    .join("")
+    .toUpperCase()
+    .slice(0, 2) || "?";
 }
 
 // mapUserToConversation is an adapter — it converts the raw backend shapes (a user document + an array of message documents) into the clean view-model that the chat UI components expect to render.
@@ -18,13 +23,14 @@ export function getInitials(name) {
 // 1. Messages → UI messages
 // 2. User → peer
 
-function mapUserToConversation({ user, messages, authUser, onlineUsers }) {
+function mapUserToConversation({ user, messages, authUser, onlineUsers, isTyping = false }) {
   const mappedMessages = messages.map((message) => ({
     id: message._id,
     role: String(message.senderId) === String(authUser?._id) ? "me" : "them",
     text: message.text || "",
     time: formatMessageTime(message.createdAt),
     imageUrl: message.image,
+    audioUrl: message.audio,
     videoUrl: message.video,
   }));
 
@@ -34,6 +40,7 @@ function mapUserToConversation({ user, messages, authUser, onlineUsers }) {
       name: user.fullName,
       subtitle: user.email,
       isOnline: onlineUsers.includes(user._id),
+      isTyping,
       avatarUrl: user.profilePic,
       initials: getInitials(user.fullName),
     },
@@ -49,6 +56,7 @@ export function useSelectedConversation() {
 
   const authUser = useAuthStore((state) => state.authUser);
   const onlineUsers = useAuthStore((state) => state.onlineUsers);
+  const typingUsers = useAuthStore((state) => state.typingUsers);
 
   const isLargeScreen = useMediaQuery("(min-width: 1024px)");
 
@@ -58,12 +66,19 @@ export function useSelectedConversation() {
     : null;
 
   const activeConversation = selectedUser
-    ? mapUserToConversation({ user: selectedUser, messages, authUser, onlineUsers })
+    ? mapUserToConversation({
+        user: selectedUser,
+        messages,
+        authUser,
+        onlineUsers,
+        isTyping: Boolean(typingUsers?.[selectedUser._id]),
+      })
     : null;
 
   return {
     activeConversation,
     activeConversationId,
     isLargeScreen,
+    isPeerTyping: Boolean(selectedUser && typingUsers?.[selectedUser._id]),
   };
 }

@@ -1,11 +1,18 @@
 import { Avatar } from "@heroui/react";
 import { AvatarWithOnlineIndicator } from "./AvatarWithOnlineIndicator";
 
-export function ConversationRow({ user, selected, onSelect }) {
+export function ConversationRow({ user, selected, onSelect, onRequest, onAccept, actionLabel }) {
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelect?.();
+        }
+      }}
       className={`flex w-full items-center gap-3 border-b border-border px-3 py-2.5 text-left ${
         selected ? "bg-accent-soft" : ""
       }`}
@@ -19,7 +26,23 @@ export function ConversationRow({ user, selected, onSelect }) {
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-[15px] font-semibold">{user.name}</p>
+        {user.username ? <p className="text-xs text-muted">{user.username}</p> : null}
+        {actionLabel ? <p className="text-xs text-muted">{actionLabel}</p> : null}
       </div>
-    </button>
+
+      {onRequest || onAccept ? (
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            if (onAccept) onAccept();
+            else if (onRequest) onRequest();
+          }}
+          className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground"
+        >
+          {actionLabel}
+        </button>
+      ) : null}
+    </div>
   );
 }

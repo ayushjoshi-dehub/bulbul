@@ -5,32 +5,100 @@ import { Server } from "socket.io";
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
+const defaultOrigins = ["http://localhost:5173", "http://localhost:5174"];
+const allowedOrigins = (process.env.FRONTEND_URL || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean)
+  .concat(defaultOrigins);
 
-const io = new Server(server, { cors: { origin: [allowedOrigin] } });
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
+    credentials: true,
+  },
+});
 
-function getReceiverSocketId(userId) {
-  return userSocketMap[userId];
+const userSocketMap = new Map();
+const socketUserMap = new Map();
+
+function getUserIdFromSocket(socket) {
+  return socket.handshake.auth?.userId || socket.handshake.query.userId || null;
 }
 
-// online users map = { userId: socketId }
-const userSocketMap = {};
-//socket.io only works with socket ids, so we need to map user ids to socket ids to know who is online 
-// and send messages in realtime to the right users. 
-// This is a simple in-memory map, but in production you might want to use a more robust solution like Redis for scalability and persistence.
+function getOnlineUsers() {
+  return Array.from(userSocketMap.keys());
+}
+
+function registerSocket(userId, socketId) {
+  const key = String(userId);
+  const sockets = userSocketMap.get(key) ?? new Set();
+  sockets.add(socketId);
+  userSocketMap.set(key, sockets);
+  socketUserMap.set(socketId, key);
+}
+
+function unregisterSocket(socketId) {
+  const userId = socketUserMap.get(socketId);
+  if (!userId) return;
+
+  const sockets = userSocketMap.get(userId);
+  if (sockets) {
+    sockets.delete(socketId);
+    if (sockets.size === 0) {
+      userSocketMap.delete(userId);
+    }
+  }
+
+  socketUserMap.delete(socketId);
+}
+
+function emitToUser(userId, event, payload) {
+  io.to(String(userId)).emit(event, payload);
+}
+
+function getReceiverSocketIds(userId) {
+  return Array.from(userSocketMap.get(String(userId)) ?? []);
+}
+
+function emitTypingStatus({ senderId, receiverId, isTyping }) {
+  if (!senderId || !receiverId) return;
+
+  emitToUser(receiverId, "typingStatus", {
+    senderId: String(senderId),
+    receiverId: String(receiverId),
+    isTyping: Boolean(isTyping),
+  });
+}
+
 io.on("connection", (socket) => {
-  const userId = socket.handshake.query.userId;
+  const userId = getUserIdFromSocket(socket);
 
-  if (userId) userSocketMap[userId] = socket.id;
+  if (!userId) {
+    socket.disconnect(true);
+    return;
+  }
 
-  // io.emit() sends event to everyone - broadcast
-  io.emit("getOnlineUsers", Object.keys(userSocketMap));
+  socket.data.userId = String(userId);
+  socket.join(String(userId));
+  registerSocket(userId, socket.id);
 
-  // socket.on is used to listen for events
+  socket.on("typingStatus", ({ receiverId, isTyping }) => {
+    if (!receiverId) return;
+
+    emitTypingStatus({
+      senderId: userId,
+      receiverId,
+      isTyping,
+    });
+  });
+
+  io.emit("getOnlineUsers", getOnlineUsers());
+
   socket.on("disconnect", () => {
-    if (userId) delete userSocketMap[userId];
-    io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    unregisterSocket(socket.id);
+    io.emit("getOnlineUsers", getOnlineUsers());
   });
 });
 
-export { app, server, io, getReceiverSocketId };
+export { app, server, io, getReceiverSocketIds, emitToUser, emitTypingStatus };
